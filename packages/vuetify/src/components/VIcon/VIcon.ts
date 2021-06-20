@@ -67,7 +67,11 @@ const VIcon = mixins(
   methods: {
     getIcon (): VuetifyIcon {
       let iconName = ''
-      if (this.$slots.default) iconName = this.$slots.default[0].text!.trim()
+      if (this.$slots.default) {
+        if (typeof this.$slots.default[0].text !='undefined') {
+          iconName = this.$slots.default[0].text.trim()
+        }
+      }
 
       return remapInternalIcon(this, iconName)
     },
